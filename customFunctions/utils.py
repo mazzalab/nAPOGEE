@@ -43,6 +43,3 @@ def draw_rna_graph(graph):
         graph, pos, with_labels=True, node_color='lightblue',
         node_size=500, font_size=10, edge_color='gray'
     )
-
-def binary_auROC(clf, input_data, binary_target):
-    return roc_auc_score(binary_target, clf.predict_proba(input_data)[:,1])
