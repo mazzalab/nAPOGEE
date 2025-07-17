@@ -43,3 +43,38 @@ def draw_rna_graph(graph):
         graph, pos, with_labels=True, node_color='lightblue',
         node_size=500, font_size=10, edge_color='gray'
     )
+
+
+def feature_name_conversion(feature_name, replace_underscore=False):
+    try:
+        feature_name = {
+            "PhastCons_100V":"PhastCons_score",
+            "PhyloP_100V":"PhyloP_score",
+            "MLC_score":"MLC_score",
+            "ss_distorsion":"Secondary_structure_alteration",
+            "ddG":"Gibbs_free_energy",
+            "ref_frequency":"Reference_Nucleotide_Frequency",
+            "alt_frequency":"Alternate_Nucleotide_Frequency",
+            "coverage":"Coverage_within_MSA",
+            "entropy":"Sequence_Entropy",
+            "conservation_blocks":"Phylogenetic_Conservation",
+            "PWM_score":"Position_Weight_Matrix",
+            "Human_MSA_position":"Position_in_the_human_MSA",
+            "bulge":"Bulge_Structural_Motif",
+            "stem":"Stem_Structural_Motif",
+            "hairpin":"Hairpin_Structural_Motif",
+            "loop":"Loop_Structural_Motif",
+            "unpaired_frequency":"Unpaired_Nucleotide_Frequency",
+            "closest_modification":"distance_to_PTM_site",
+            "closest_modification_2D":"Spatial_distance_to_PTM_site",
+            "OEUF_score":"OEUF_score",
+            "RNA_MSM":"RNA-MSM",
+            "x_coord":"PDB_coordinate_on_x_axis",
+            "y_coord":"PDB_coordinate_on_y_axis",
+            "z_coord":"PDB_coordinate_on_z_axis"
+        }[feature_name]
+    except KeyError:
+        pass
+    if replace_underscore:
+        feature_name = feature_name.replace("_", " ")
+    return feature_name
