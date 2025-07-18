@@ -14,7 +14,7 @@ class GridSearchOOB_BinaryClassifier(MetaEstimatorMixin, BaseEstimator):
         self.scoring_function = scoring_function
         self.n_jobs = n_jobs
         self.refit = refit
-        self.verbose = verbose #TODO Mauro: implement verbosity
+        self.verbose = verbose #TODO: implement verbosity
         self.error_score = error_score
         self.return_train_score = return_train_score
 
@@ -117,8 +117,7 @@ class GridSearchOOB_BinaryClassifier(MetaEstimatorMixin, BaseEstimator):
         # extract oob scores and train scores
         self.oob_score, self.train_score = scores.T
 
-        # return None
-        # TODO Mauro: think about something more useful to return
+        # TODO: think about something more useful to return
         return None
     
 
