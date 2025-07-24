@@ -1,0 +1,16 @@
+# Core libraries
+numpy
+pandas
+matplotlib
+scipy
+pickle
+
+# Machine learning
+scikit-learn
+imbalanced-learn
+
+# Graph and network analysis
+networkx
+
+# SHAP for explainability
+shap
