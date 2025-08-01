@@ -119,13 +119,13 @@ This structure ensures that users and reviewers can easily replicate the results
 │   │   ├── altered_sequences.fa # altered RNA sequences
 │   │   ├── candidate_models
 │   │   │   ├── model_knn.pk
-│   │   │   ├── model_rf.pk
+│   │   │   ├── model_rf.pk # model chosed for rAPOGEE
 │   │   │   └── model_svc.pk
 │   │   ├── cross_validation_test.pk # `y_true` and `y_pred` resulting from cross-validating the rAPOGEE model on its training set
 │   │   ├── lisa.csv # LISA values from spatial autocorrelation analysis
 │   │   ├── lisa.html # 3D visualization of the positive-LISA residues pathogenicity on the rRNA complex
 │   │   ├── mithril_features.csv # features extracted of rRNA SNVs
-│   │   └── rAPOGEE_predictions.csv # scores and pathogenicity probability of rRNA SNVs
+│   │   └── rAPOGEE_predictions.csv0 # scores and pathogenicity probability of rRNA SNVs
 │   ├── data
 │   │   ├── alignments.zip # philogenetic alignment of MIDORI sequences of MT-RNR1 and MT-RNR2
 │   │   ├── metazoa_lineage.txt
@@ -144,32 +144,32 @@ This structure ensures that users and reviewers can easily replicate the results
 │   │   └── spatial.ipynb # ribosome spatial autocorrelation analysis
 │   ├── features.ipynb # feature extraction
 │   ├── model_selection.ipynb # tuning and training of the proposed classifiers to choose the best estimator and to estimate its performace on unseen variables 
-│   └── predict.ipynb # generalization fo the best model on the whole rRNA SNVs domain and pathogenicity probability estimation
-├── README.md
+│   └── predict.ipynb # generalization of the best model on the whole rRNA SNVs domain and pathogenicity probability estimation
+├── README.md # what you're reading just right now
 ├── requirements.txt
 └── tAPOGEE
     ├── checkpoints
     │   ├── candidate_models
     │   │   ├── model_knn.pk
     │   │   ├── model_rf.pk
-    │   │   └── model_svc.pk
-    │   ├── lisa.csv
-    │   ├── mithril_features.csv
-    │   ├── shap_values.pk
-    │   └── tAPOGEE_predictions.csv
+    │   │   └── model_svc.pk # model chosed for tAPOGEE
+    │   ├── lisa.csv # LISA values from spatial autocorrelation analysis
+    │   ├── mithril_features.csv # features extracted of tRNA SNVs
+    │   ├── shap_values.pk # feature contributions for each tRNA SNV computed via SHAP
+    │   └── tAPOGEE_predictions.csv # scores and pathogenicity probability of tRNA SNVs
     ├── data
-    │   ├── aligned_position_suzuki.csv
-    │   ├── HomoSapiens_mttRNA_Seq.aln
-    │   ├── HomoSapiens_mttRNA_Str_simpl.aln
-    │   ├── Mithril_msm_embedding.csv
+    │   ├── aligned_position_suzuki.csv # human WT mt-tRNA alignment according to "https://pmc.ncbi.nlm.nih.gov/articles/PMC539966/"
+    │   ├── HomoSapiens_mttRNA_Seq.aln # human WT mt-tRNA alignment according to mttrnadb
+    │   ├── HomoSapiens_mttRNA_Str_simpl.aln # structural motifs of human mttrnadb alignment
+    │   ├── Mithril_msm_embedding.csv # RNA-MSM embedding channels for each tRNA SNV
     │   ├── mithril_V03.txt # MITIMPACT (version 3.0)
-    │   ├── Mito_tRNA_variants_folded.txt
-    │   ├── oeuf_lake_et_al.tsv
-    │   ├── PTM_and_domains.txt
+    │   ├── Mito_tRNA_variants_folded.txt # predicted secondary structures (in dot-braket) of both WT and variated tRNA and associated free energies
+    │   ├── oeuf_lake_et_al.tsv # oeuf score from "https://www.nature.com/articles/s41586-024-08048-x"
+    │   ├── PTM_and_domains.txt # tRNA residues involved in post transcriptional modifications
     │   ├── taxa_Metazoa.txt
-    │   ├── test_set.txt
-    │   ├── training_set.txt
-    │   ├── tRNA_Alignments # mt-tRNA functional alignment (just sequences) from trnadb
+    │   ├── test_set.txt # Dataset 1 and 2 (tRNA)
+    │   ├── training_set.txt # Dataset 3 and 4 (tRNA)
+    │   ├── tRNA_Alignments # phylogenetic mt-tRNA functional alignments from trnadb (gene specific)
     │   │   ├── Metazoa_Ala.aln
     │   │   ├── Metazoa_Arg.aln
     │   │   ├── Metazoa_Asn.aln
@@ -192,7 +192,7 @@ This structure ensures that users and reviewers can easily replicate the results
     │   │   ├── Metazoa_Trp.aln
     │   │   ├── Metazoa_Tyr.aln
     │   │   └── Metazoa_Val.aln
-    │   └── tRNA_Alignments_structure # mt-tRNA functional alignment (just dot-braket secondary structures) from trnadb
+    │   └── tRNA_Alignments_structure # structures from the phylogenetic mt-tRNA functional alignments from trnadb
     │       ├── Metazoa_Ala.aln
     │       ├── Metazoa_Arg.aln
     │       ├── Metazoa_Asn.aln
@@ -217,8 +217,8 @@ This structure ensures that users and reviewers can easily replicate the results
     │       └── Metazoa_Val.aln
     ├── downstream_analysis
     │   ├── feature_importance.ipynb # shap feature importance estimation
-    │   ├── gnomad_variants.ipynb
-    │   ├── spatial.ipynb
+    │   ├── gnomad_variants.ipynb # study of the predicted pathogenicity of observed population mt-tRNA SNVs in function of heteroplasmy
+    │   ├── spatial.ipynb # tRNA spatial autocorrelation analysis
     │   └── wt_ss_figures
     │       ├── Ala_ss.ps
     │       ├── Arg_ss.ps
@@ -253,10 +253,10 @@ This structure ensures that users and reviewers can easily replicate the results
     │   └── PON_data
     │       ├── PON_predictions.txt
     │       └── PON_training_set.txt
-    ├── features.ipynb
-    ├── model_selection.ipynb
-    ├── model_selection_knn.py
-    ├── model_selection_rf.py
-    ├── model_selection_svc.py
-    └── predict.ipynb
+    ├── features.ipynb # ribosome spatial autocorrelation analysis
+    ├── model_selection.ipynb # evaluate the proposed classifiers to choose the best estimator and test in on test variants 
+    ├── model_selection_knn.py # tune and train the knn classifier
+    ├── model_selection_rf.py # tune and train the random forest classifier
+    ├── model_selection_svc.py # tune and train the SVM classifier
+    └── predict.ipynb # generalization of the best model on the whole tRNA SNVs domain and pathogenicity probability estimation
 ```
