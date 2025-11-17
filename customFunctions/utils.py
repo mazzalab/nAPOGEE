@@ -48,30 +48,30 @@ def draw_rna_graph(graph):
 def feature_name_conversion(feature_name, replace_underscore=False):
     try:
         feature_name = {
-            "PhastCons_100V":"PhastCons_score",
-            "PhyloP_100V":"PhyloP_score",
-            "MLC_score":"MLC_score",
-            "ss_distorsion":"Secondary_structure_alteration",
+            "PhastCons_100V":"PhastCons",
+            "PhyloP_100V":"PhyloP",
+            "MLC_score":"MLC",
+            "ss_distorsion":"Secondary structure alteration",
             "ddG":"ΔΔG",
-            "ref_frequency":"Reference_Nucleotide_Frequency",
-            "alt_frequency":"Alternate_Nucleotide_Frequency",
-            "coverage":"Coverage_within_MSA",
-            "entropy":"Sequence_Entropy",
-            "conservation_blocks":"Phylogenetic_Conservation", #depth?
-            "PWM_score":"Position_Weight_Matrix",
-            "Human_MSA_position":"Position_in_the_human_MSA",
-            "bulge":"Bulge_Structural_Motif",
-            "stem":"Stem_Structural_Motif",
-            "hairpin":"Hairpin_Structural_Motif",
-            "loop":"Loop_Structural_Motif",
-            "unpaired_frequency":"Unpaired_Nucleotide_Frequency",
-            "closest_modification":"distance_to_PTM_site",
-            "closest_modification_2D":"Spatial_distance_to_PTM_site",
-            "OEUF_score":"OEUF_score",
+            "ref_frequency":"Reference Nucleotide Frequency",
+            "alt_frequency":"Alternate Nucleotide Frequency",
+            "coverage":"Coverage within MSA",
+            "entropy":"Sequence Entropy",
+            "conservation_blocks":"Phylogenetic Conservation",
+            "PWM_score":"PWM",
+            "Human_MSA_position":"Position in the human MSA",
+            "bulge":"Bulge Structural Motif",
+            "stem":"Stem Structural Motif",
+            "hairpin":"Hairpin Structural Motif",
+            "loop":"Loop Structural Motif",
+            "unpaired_frequency":"Unpaired Nucleotide Frequency",
+            "closest_modification":"distance to PTM site",
+            "closest_modification_2D":"Spatial distance to PTM site",
+            "OEUF_score":"OEUF",
             "RNA_MSM":"RNA-MSM",
-            "x_coord":"PDB_coordinate_on_x_axis",
-            "y_coord":"PDB_coordinate_on_y_axis",
-            "z_coord":"PDB_coordinate_on_z_axis"
+            "x_coord":"PDB coordinate on x axis",
+            "y_coord":"PDB coordinate on y axis",
+            "z_coord":"PDB coordinate on z axis"
         }[feature_name]
     except KeyError:
         pass
