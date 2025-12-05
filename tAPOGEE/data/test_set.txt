@@ -1,0 +1,72 @@
+#CHROM	POS	REF	ALT	Gene_symbol	label	Mithril_id
+chrM	616	T	C	MT-TF	Likely pathogenic	MITHRIL.1846
+chrM	1644	G	A	MT-TV	Likely pathogenic	MITHRIL.4929
+chrM	3243	A	T	MT-TL1	Likely pathogenic	MITHRIL.9729
+chrM	3243	A	G	MT-TL1	Pathogenic	MITHRIL.9728
+chrM	3251	A	G	MT-TL1	Likely pathogenic	MITHRIL.9752
+chrM	3255	G	A	MT-TL1	Likely pathogenic	MITHRIL.9763
+chrM	3256	C	T	MT-TL1	Likely pathogenic	MITHRIL.9768
+chrM	3258	T	C	MT-TL1	Likely pathogenic	MITHRIL.9773
+chrM	3260	A	G	MT-TL1	Likely pathogenic	MITHRIL.9779
+chrM	3271	T	C	MT-TL1	Pathogenic	MITHRIL.9812
+chrM	3291	T	C	MT-TL1	Likely pathogenic	MITHRIL.9872
+chrM	3302	A	G	MT-TL1	Likely pathogenic	MITHRIL.9905
+chrM	3303	C	T	MT-TL1	Likely pathogenic	MITHRIL.9909
+chrM	4300	A	G	MT-TI	Likely pathogenic	MITHRIL.12899
+chrM	4450	G	A	MT-TM	Likely pathogenic	MITHRIL.13357
+chrM	5521	G	A	MT-TW	Likely pathogenic	MITHRIL.16570
+chrM	5556	G	A	MT-TW	Likely pathogenic	MITHRIL.16675
+chrM	5650	G	A	MT-TA	Likely pathogenic	MITHRIL.16957
+chrM	5690	A	G	MT-TN	Likely pathogenic	MITHRIL.17078
+chrM	5703	G	A	MT-TN	Pathogenic	MITHRIL.17116
+chrM	5728	T	C	MT-TN	Likely pathogenic	MITHRIL.17192
+chrM	7497	G	A	MT-TS1	Likely pathogenic	MITHRIL.22501
+chrM	7510	T	C	MT-TS1	Likely pathogenic	MITHRIL.22541
+chrM	7511	T	C	MT-TS1	Likely pathogenic	MITHRIL.22544
+chrM	8313	G	A	MT-TK	Likely pathogenic	MITHRIL.24949
+chrM	8340	G	A	MT-TK	Likely pathogenic	MITHRIL.25030
+chrM	8344	A	G	MT-TK	Pathogenic	MITHRIL.25043
+chrM	8356	T	C	MT-TK	Likely pathogenic	MITHRIL.25079
+chrM	8363	G	A	MT-TK	Likely pathogenic	MITHRIL.25099
+chrM	12147	G	A	MT-TH	Likely pathogenic	MITHRIL.36613
+chrM	12201	T	C	MT-TH	Likely pathogenic	MITHRIL.36776
+chrM	12258	C	A	MT-TS2	Likely pathogenic	MITHRIL.36946
+chrM	12276	G	A	MT-TL2	Likely pathogenic	MITHRIL.37000
+chrM	12315	G	A	MT-TL2	Likely pathogenic	MITHRIL.37117
+chrM	14674	T	C	MT-TE	Likely pathogenic	MITHRIL.44195
+chrM	14709	T	C	MT-TE	Likely pathogenic	MITHRIL.44300
+chrM	15923	A	G	MT-TT	Likely pathogenic	MITHRIL.47942
+chrM	15990	C	T	MT-TP	Likely pathogenic	MITHRIL.48144
+chrM	4312	C	T	MT-TI	Benign	MITHRIL.12936
+chrM	4370	T	C	MT-TQ	Benign	MITHRIL.13118
+chrM	5603	C	T	MT-TA	Benign	MITHRIL.16818
+chrM	5773	G	A	MT-TC	Benign	MITHRIL.17326
+chrM	7476	C	T	MT-TS1	Benign	MITHRIL.22440
+chrM	7521	G	A	MT-TD	Benign	MITHRIL.22573
+chrM	10034	T	C	MT-TG	Benign	MITHRIL.30254
+chrM	10463	T	C	MT-TR	Benign	MITHRIL.31541
+chrM	12239	C	T	MT-TS2	Benign	MITHRIL.36891
+chrM	15907	A	G	MT-TT	Benign	MITHRIL.47894
+chrM	15941	T	C	MT-TT	Benign	MITHRIL.47996
+chrM	5633	C	T	MT-TA	Likely benign	MITHRIL.16908
+chrM	5711	A	G	MT-TN	Likely benign	MITHRIL.17141
+chrM	10031	T	C	MT-TG	Likely benign	MITHRIL.30245
+chrM	12172	A	G	MT-TH	Likely benign	MITHRIL.36689
+chrM	12248	A	G	MT-TS2	Likely benign	MITHRIL.36917
+chrM	15905	T	C	MT-TT	Likely benign	MITHRIL.47888
+chrM	15978	C	T	MT-TP	Likely benign	MITHRIL.48108
+chrM	5601	C	T	MT-TA	Benign	MITHRIL.16812
+chrM	5655	T	C	MT-TA	Benign	MITHRIL.16973
+chrM	12236	G	A	MT-TS2	Benign	MITHRIL.36880
+chrM	14687	A	G	MT-TE	Benign	MITHRIL.44234
+chrM	15904	C	T	MT-TT	Benign	MITHRIL.47886
+chrM	15924	A	G	MT-TT	Benign	MITHRIL.47945
+chrM	15928	G	A	MT-TT	Benign	MITHRIL.47956
+chrM	15930	G	A	MT-TT	Benign	MITHRIL.47962
+chrM	15942	T	C	MT-TT	Benign	MITHRIL.47999
+chrM	4452	T	C	MT-TM	Likely benign	MITHRIL.13364
+chrM	5821	G	A	MT-TC	Likely benign	MITHRIL.17470
+chrM	5843	A	G	MT-TY	Likely benign	MITHRIL.17540
+chrM	10044	A	G	MT-TG	Likely benign	MITHRIL.30284
+chrM	14693	A	G	MT-TE	Likely benign	MITHRIL.44252
+chrM	15927	G	A	MT-TT	Likely benign	MITHRIL.47953
