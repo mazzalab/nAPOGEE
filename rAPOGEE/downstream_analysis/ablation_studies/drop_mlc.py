@@ -7,14 +7,10 @@ from sklearn.metrics import roc_curve, average_precision_score
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../../"), os.pardir)))
 from customFunctions.utils import binary_auROC
 
-# Define predefined genomic conservation features to exclude from the main feature set
-conservation_features = ['PhastCons_100V', 'PhyloP_100V', 'ref_frequency', 'alt_frequency', 'coverage', 'entropy', 'conservation_blocks']
-
-
 y = pd.read_csv("../../data/training_test_set_unified.txt", sep="\t", index_col="Mithril_id").label\
     .replace(["benign", "likely benign", "likely pathogenic", "pathogenic"], [0, 0, 1, 1])
 # Load genomic features and drop the conservation features defined above
-X = pd.read_csv("../../checkpoints/mithril_features.csv", sep="\t", index_col=0).drop(conservation_features, axis=1)
+X = pd.read_csv("../../checkpoints/mithril_features.csv", sep="\t", index_col=0).drop("MLC_score", axis=1)
 X = X.loc[y.index.intersection(X.index)]
 y = y.loc[X.index].astype(int)
 
@@ -131,4 +127,4 @@ cv_ground_truth = [
     y.iloc[test]
     for train, test in kfold.split(X_extended, y)
 ]
-pk.dump((cv_ground_truth, cv_predictions), open("./ablation_cv/cv_predictions_no_conservation.pk", "wb"))
+pk.dump((cv_ground_truth, cv_predictions), open("./ablation_cv/cv_predictions_no_mlc.pk", "wb"))
