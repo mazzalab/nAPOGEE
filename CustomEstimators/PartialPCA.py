@@ -30,6 +30,12 @@ class PartialPCA(BaseEstimator, TransformerMixin):
         # Maschera per le colonne dei channels
         self.feature_mask = X.columns.isin(self.pca_features)
         self.n_features_in_pca = int(self.feature_mask.sum())
+        
+        # Warning if there are no features to apply PCA on
+        if self.n_features_in_pca == 0:
+            warnings.warn(f"WARNING: No features to transform.")
+            self.n_components_ = 0
+            return self
 
         # Check n_components type
         if type(self.n_components)==int:
@@ -37,7 +43,7 @@ class PartialPCA(BaseEstimator, TransformerMixin):
             if self.n_components > self.n_features_in_pca:
                 warnings.warn(f"WARNING: n_components > feature pca features. Setting n_components to {self.n_features_in_pca}.")
                 self.n_components = self.n_features_in_pca
-                self.pca.n_components = self.n_features_in_pca      
+                self.pca.n_components = self.n_features_in_pca
             
         elif type(self.n_components)==float:
             if self.n_components <= float(0) or self.n_components > float(1):
@@ -50,11 +56,15 @@ class PartialPCA(BaseEstimator, TransformerMixin):
 
         self.n_components_ = self.pca.n_components_
 
-        
         return self
 
     
     def transform(self, X, y=None):
+        
+        # Skipping transformation if there are no features to apply PCA on
+        if self.n_features_in_pca == 0:
+            warnings.warn(f"WARNING: No features to transform. Returning original X.")
+            return X
                 
         # Apply mask to X
 
