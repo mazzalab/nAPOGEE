@@ -50,6 +50,8 @@ Each folder contains the following components:
   - Population frequency investigations.  
   - Spatial autocorrelation of pathogenicity.  
   - Feature importance analysis.
+  - Ablation studies and grid-search diagnostics.
+  - External benchmarking against PON and MitoTIP.
 
 - **`data/`**:  
   Contains all input files required to run the analysis, such as raw feature data and embeddings.
@@ -62,7 +64,7 @@ Each folder contains the following components:
 
 ## Directory Tree
 
-- The `downstream_analysis` subfolder in both `rAPOGEE` and `tAPOGEE` contains additional analyses on the predictions and models, such as population frequency investigations, spatial autocorrelation, and feature importance analysis.
+- The `downstream_analysis` subfolder in both `rAPOGEE` and `tAPOGEE` contains additional analyses on the predictions and models, such as population frequency investigations, spatial autocorrelation, feature importance analysis, ablation studies, and external benchmarking.
 - The `data` folder includes all input files required to run the analysis.
 - The `checkpoints` folder contains pre-computed intermediate results to facilitate running specific notebooks without regenerating all intermediate steps.
 - To replicate the pipeline from scratch, delete the contents of the `checkpoints` folder and ensure all required input files are present in the `data` folder.
@@ -82,11 +84,15 @@ The following directory tree provides the folder structure along with details ab
 ├── customFunctions
 │   └── utils.py # just utils
 ├── figures
+│   ├── ROC_curves.ipynb
 │   ├── about_feature_importance_and_shap.ipynb
 │   ├── distributions.ipynb
 │   ├── genes_boxplot.ipynb
-│   ├── ROC_curves.ipynb
 │   └── svg
+│       ├── ablation_study_rAPOGEE_cv(ap).svg
+│       ├── ablation_study_rAPOGEE_cv(auc).svg
+│       ├── ablation_study_tAPOGEE_training_and_test.svg
+│       ├── ablation_study_tAPOGEE_training_cv.svg
 │       ├── feature_importance.svg
 │       ├── LISA_tRNA.svg
 │       ├── posterior_genes_box.svg
@@ -95,9 +101,11 @@ The following directory tree provides the folder structure along with details ab
 │       ├── rAPOGEE_likelihood.svg
 │       ├── rAPOGEE_misclassification.svg
 │       ├── rAPOGEE_posterior.svg
-│       ├── robosome_scatter.svg
+│       ├── ribosome_scatter.svg
 │       ├── ROC_curves.svg
+│       ├── rRNA_gnomad.svg
 │       ├── rRNA_gnomad_pathogenicity.svg
+│       ├── rRNA_gnomad_violins.svg
 │       ├── shap_contributions_tAPOGEE.svg
 │       ├── shap_mithril_1830.svg
 │       ├── suzuki_average_score.svg
@@ -106,7 +114,9 @@ The following directory tree provides the folder structure along with details ab
 │       ├── tAPOGEE_likelihood.svg
 │       ├── tAPOGEE_misclassification.svg
 │       ├── tAPOGEE_posterior.svg
-│       └── tRNA_gnomad_pathogenicity.svg
+│       ├── tRNA_gnomad.svg
+│       ├── tRNA_gnomad_pathogenicity.svg
+│       └── tRNA_gnomad_violins.svg
 ├── rAPOGEE
 │   ├── checkpoints
 │   │   ├── altered_sequences.fa # altered RNA sequences
@@ -118,7 +128,7 @@ The following directory tree provides the folder structure along with details ab
 │   │   ├── lisa.csv # LISA values from spatial autocorrelation analysis
 │   │   ├── lisa.html # 3D visualization of the positive-LISA residues pathogenicity on the rRNA complex
 │   │   ├── mithril_features.csv # features extracted of rRNA SNVs
-│   │   └── rAPOGEE_predictions.csv0 # scores and pathogenicity probability of rRNA SNVs
+│   │   └── rAPOGEE_predictions.csv # scores and pathogenicity probability of rRNA SNVs
 │   ├── data
 │   │   ├── alignments.zip # philogenetic alignment of MIDORI sequences of MT-RNR1 and MT-RNR2
 │   │   ├── metazoa_lineage.txt
@@ -133,8 +143,26 @@ The following directory tree provides the folder structure along with details ab
 │   │   ├── test_set.txt # Dataset 3 and 4
 │   │   └── training_test_set_unified.txt # Dataset 1 and 2
 │   ├── downstream_analysis
+│   │   ├── ablation_studies
+│   │   │   ├── ablation_studies.ipynb # feature ablation analysis
+│   │   │   ├── ablation_cv
+│   │   │   │   ├── cv_predictions_no_conservation.pk
+│   │   │   │   ├── cv_predictions_no_ddG.pk
+│   │   │   │   ├── cv_predictions_no_mlc.pk
+│   │   │   │   ├── cv_predictions_no_position.pk
+│   │   │   │   └── cv_predictions_no_rnamsm.pk
+│   │   │   ├── drop_conservation.py
+│   │   │   ├── drop_ddg.py
+│   │   │   ├── drop_mlc.py
+│   │   │   ├── drop_position.py
+│   │   │   └── drop_rnamsm.py
+│   │   ├── collinearity.ipynb # feature collinearity analysis
 │   │   ├── gnomad_variants.ipynb # study of the predicted pathogenicity of observed population mt-rRNA SNVs in function of heteroplasmy
-│   │   └── spatial.ipynb # ribosome spatial autocorrelation analysis
+│   │   ├── spatial.ipynb # ribosome spatial autocorrelation analysis
+│   │   └── was_it_worth_gridsearching
+│   │       ├── analize_gridsearch.ipynb # grid-search diagnostics
+│   │       ├── gridsearch.pk
+│   │       └── run_gridsearch.py
 │   ├── features.ipynb # feature extraction
 │   ├── model_selection.ipynb # tuning and training of the proposed classifiers to choose the best estimator and to estimate its performace on unseen variables 
 │   └── predict.ipynb # generalization of the best model on the whole rRNA SNVs domain and pathogenicity probability estimation
@@ -209,7 +237,21 @@ The following directory tree provides the folder structure along with details ab
     │       ├── Metazoa_Tyr.aln
     │       └── Metazoa_Val.aln
     ├── downstream_analysis
-    │   ├── feature_importance.ipynb # shap feature importance estimation
+    │   ├── ablation_studies
+    │   │   ├── ablation_studies.ipynb # feature ablation analysis
+    │   │   ├── drop_conservation.py
+    │   │   ├── drop_mlc.py
+    │   │   ├── drop_position.py
+    │   │   ├── drop_rnamsm.py
+    │   │   ├── drop_structure.py
+    │   │   └── partial_models
+    │   │       ├── model_svc_no_conservation.pk
+    │   │       ├── model_svc_no_mlc.pk
+    │   │       ├── model_svc_no_position.pk
+    │   │       ├── model_svc_no_rnamsm.pk
+    │   │       └── model_svc_no_structure.pk
+    │   ├── collinearity.ipynb # feature collinearity analysis
+    │   ├── feature_importance.ipynb # SHAP feature importance estimation
     │   ├── gnomad_variants.ipynb # study of the predicted pathogenicity of observed population mt-tRNA SNVs in function of heteroplasmy
     │   ├── spatial.ipynb # tRNA spatial autocorrelation analysis
     │   └── wt_ss_figures
@@ -237,16 +279,16 @@ The following directory tree provides the folder structure along with details ab
     │       ├── Tyr_ss.ps
     │       └── Val_ss.ps
     ├── external_tools_comparison
-    │   ├── mitotip_comparison.ipynb
-    │   ├── mitotip_data
-    │   │   ├── mitotip_2017_mask.csv
-    │   │   ├── mitotip_benign_variants.csv
-    │   │   └── mitotip_pathogenic_variants.csv
     │   ├── PON_comparison.ipynb
-    │   └── PON_data
-    │       ├── PON_predictions.txt
-    │       └── PON_training_set.txt
-    ├── features.ipynb # ribosome spatial autocorrelation analysis
+    │   ├── PON_data
+    │   │   ├── PON_predictions.txt
+    │   │   └── PON_training_set.txt
+    │   ├── mitotip_comparison.ipynb
+    │   └── mitotip_data
+    │       ├── mitotip_2017_mask.csv
+    │       ├── mitotip_benign_variants.csv
+    │       └── mitotip_pathogenic_variants.csv
+    ├── features.ipynb # feature extraction
     ├── model_selection.ipynb # evaluate the proposed classifiers to choose the best estimator and test in on test variants 
     ├── model_selection_knn.py # tune and train the knn classifier
     ├── model_selection_rf.py # tune and train the random forest classifier
